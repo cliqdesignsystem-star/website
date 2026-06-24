@@ -1,0 +1,278 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-heading-family);
+  /* Cliq System additions */
+  --color-tertiary: var(--tertiary);
+  --color-surface: var(--surface);
+  --font-display: var(--font-display-family);
+  --font-body: var(--font-body-family);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  /* Cliq System tokens */
+  --tertiary: #f59e0b;
+  --surface: #f5f5f5;
+  --font-display-family: 'Inter', sans-serif;
+  --font-heading-family: 'Inter', sans-serif;
+  --font-body-family: 'Inter', sans-serif;
+  --font-size-base: 16px;
+  --font-weight-body: 400;
+  --text-casing: none;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --border-width: 1px;
+  --spacing-scale: 1;
+  --navbar-height: 64px;
+  --section-padding: 80px;
+  --hero-padding: 120px;
+  --grid-gap: 24px;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+  /* Cliq System dark tokens */
+  --tertiary: #fbbf24;
+  --surface: #1a1a1a;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body-family);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-body);
+    text-transform: var(--text-casing);
+  }
+  html {
+    @apply font-sans;
+  }
+  h1 { font-family: var(--font-display-family); }
+  h2, h3, h4, h5, h6 { font-family: var(--font-heading-family); }
+  .font-display { font-family: var(--font-display-family); }
+  .btn-primary {
+    background-color: var(--primary);
+    color: white;
+    border-radius: var(--radius);
+    border: var(--border-width) solid var(--primary);
+    box-shadow: var(--shadow);
+    padding: calc(0.5rem * var(--spacing-scale)) calc(1.25rem * var(--spacing-scale));
+    font-weight: 500;
+    transition: opacity 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--primary);
+    border-radius: var(--radius);
+    border: var(--border-width) solid var(--primary);
+    padding: calc(0.5rem * var(--spacing-scale)) calc(1.25rem * var(--spacing-scale));
+    font-weight: 500;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .btn-secondary:hover { background-color: color-mix(in srgb, var(--primary) 8%, transparent); }
+  .card {
+    background-color: var(--surface);
+    border-radius: var(--card-radius, calc(var(--radius) * 1.5));
+    border: var(--card-border, var(--border-width)) solid color-mix(in srgb, var(--foreground) 10%, transparent);
+    box-shadow: var(--card-shadow, var(--shadow));
+    padding: var(--card-padding, calc(1.5rem * var(--spacing-scale)));
+  }
+  .section {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+  }
+  .hero-section {
+    padding-top: var(--hero-padding);
+    padding-bottom: var(--hero-padding);
+  }
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-track { animation: marquee 30s linear infinite; }
+  .marquee-track:hover { animation-play-state: paused; }
+
+  /* Element pulse for dashboard scroll-to / in-view feedback */
+  @keyframes cliq-pulse {
+    0%, 100% { outline-color: transparent; outline-offset: 0px; }
+    30%, 70% { outline-color: color-mix(in srgb, var(--primary) 70%, transparent); outline-offset: 8px; }
+  }
+  .cliq-pulse {
+    outline: 3px solid transparent;
+    animation: cliq-pulse 1.6s ease-in-out;
+    border-radius: 4px;
+  }
+
+  /* Focus Mode — dim/blur overlay placed inside the scaled preview so
+     stacking context contains both the dim and the lifted elements.
+     Opacity is driven by JS state (no CSS keyframes), so re-renders
+     don't cause a restart / blink. */
+  .preview-canvas-root { position: relative; }
+  .cliq-focus-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 40;
+    pointer-events: none;
+  }
+  .cliq-focus-overlay--dark {
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.72) 100%);
+  }
+  .cliq-focus-overlay--blur {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  /* Lift matching elements above the dim overlay */
+  .preview-canvas-root[data-focus-on="true"][data-focus-target="card"]          [data-cliq-target~="card"],
+  .preview-canvas-root[data-focus-on="true"][data-focus-target="modal"]         [data-cliq-target~="modal"],
+  .preview-canvas-root[data-focus-on="true"][data-focus-target="palette"]       [data-cliq-target~="palette"],
+  .preview-canvas-root[data-focus-on="true"][data-focus-target="surface"]       [data-cliq-target~="surface"],
+  .preview-canvas-root[data-focus-on="true"][data-focus-target="typography"]    [data-cliq-target~="typography"],
+  .preview-canvas-root[data-focus-on="true"][data-focus-target="nav"]           [data-cliq-target~="nav"],
+  .preview-canvas-root[data-focus-on="true"][data-focus-target="hero"]          [data-cliq-target~="hero"],
+  .preview-canvas-root[data-focus-on="true"][data-focus-target="grid"]          [data-cliq-target~="grid"],
+  .preview-canvas-root[data-focus-on="true"][data-focus-target="footer"]        [data-cliq-target~="footer"],
+  .preview-canvas-root[data-focus-on="true"][data-focus-target="primary-btn"]   [data-cliq-target~="primary-btn"],
+  .preview-canvas-root[data-focus-on="true"][data-focus-target="secondary-btn"] [data-cliq-target~="secondary-btn"],
+  .preview-canvas-root[data-focus-on="true"][data-focus-target="accent-badge"]  [data-cliq-target~="accent-badge"],
+  .preview-canvas-root[data-focus-on="true"][data-focus-target="display-text"]  [data-cliq-target~="display-text"],
+  .preview-canvas-root[data-focus-on="true"][data-focus-target="body-text"]     [data-cliq-target~="body-text"] {
+    position: relative;
+    z-index: 50;
+    outline: 2px solid var(--primary);
+    outline-offset: 6px;
+    border-radius: 4px;
+    transition: outline 200ms;
+  }
+
+  /* Premium scrollbars */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--foreground) 18%, transparent);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--primary) 55%, transparent);
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--foreground) 18%, transparent) transparent;
+  }
+}

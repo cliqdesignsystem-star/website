@@ -1,0 +1,1565 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B3YLAND Design System Documentation</title>
+  <!-- DM Sans · body / UI text -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+    rel="stylesheet" />
+  <!-- Phudu · section headings h2–h6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Phudu:wght@300..900&display=swap" rel="stylesheet" />
+  <!-- Dela Gothic One · UX load-time placeholder for ZtShago (not brand typography) -->
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet" />
+  <!-- Google Material Icons -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round" />
+  <!-- FontAwesome 6 (for brand icons demo) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* ZtShago ExtraBold — local display font for h1 */
+    @font-face {
+      font-family: 'ZtShago';
+      src: url('/fonts/ZtShago-ExtraBold.woff2') format('woff2');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --ivory: #fdfdf1;
+      --carbon: #1a1a1a;
+      --gunmetal: #424242;
+      --orange: #ff7900;
+      --amber: #ffb31f;
+      --terra: #f1432a;
+      --cobalt: #252e7d;
+      --day-blue: #b9e5f0;
+      --lilac: #c8a2c8;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      background: var(--ivory);
+      color: var(--carbon);
+      line-height: 1.7;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 32px;
+    }
+
+    /* ── Header ── */
+    .doc-header {
+      border-bottom: 4px solid var(--carbon);
+      padding-bottom: 40px;
+      margin-bottom: 64px;
+    }
+
+    .doc-header h1 {
+      font-family: 'ZtShago', 'Dela Gothic One', sans-serif;
+      font-weight: 800;
+      font-size: 80px;
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .doc-header p {
+      font-size: 15px;
+      color: var(--gunmetal);
+      max-width: 560px;
+    }
+
+    .version-tag {
+      display: inline-block;
+      background: var(--carbon);
+      color: var(--ivory);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 72px;
+    }
+
+    h2 {
+      font-family: 'Phudu', sans-serif;
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e0e0d8;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-family: 'Phudu', sans-serif;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gunmetal);
+      margin: 32px 0 16px;
+    }
+
+    p {
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+
+    /* ── Color Swatches ── */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 16px;
+      margin: 20px 0 32px;
+    }
+
+    .swatch {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .swatch-color {
+      height: 80px;
+    }
+
+    .swatch-info {
+      padding: 10px 12px;
+      background: white;
+      border-top: 1px solid rgba(0, 0, 0, 0.07);
+    }
+
+    .swatch-name {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .swatch-hex {
+      font-size: 11px;
+      color: var(--gunmetal);
+      font-family: monospace;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .copy-btn {
+      background: none;
+      border: 1px solid #ddd;
+      font-size: 9px;
+      padding: 1px 4px;
+      border-radius: 3px;
+      cursor: pointer;
+      color: #888;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--carbon);
+      color: white;
+      border-color: var(--carbon);
+    }
+
+    /* ── Theme Cards ── */
+    .theme-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .theme-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .theme-card-header {
+      padding: 14px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .theme-strips {
+      display: flex;
+      height: 48px;
+    }
+
+    .theme-strip {
+      flex: 1;
+      position: relative;
+    }
+
+    .theme-strip-label {
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .theme-meta {
+      padding: 12px 18px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* ── 60-30-10 Diagram ── */
+    .ratio-diagram {
+      display: flex;
+      height: 120px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .ratio-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .ratio-seg span:first-child {
+      font-family: 'Phudu', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .ratio-seg span:last-child {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    .ratio-diagram-alt {
+      height: 80px;
+    }
+
+    .ratio-diagram-alt .ratio-seg span:first-child {
+      font-size: 22px;
+    }
+
+    /* ── Section Examples ── */
+    .section-examples {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .section-ex {
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .section-ex-label {
+      background: var(--carbon);
+      color: var(--ivory);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+    }
+
+    .section-ex-body {
+      display: flex;
+      height: 70px;
+    }
+
+    .section-ex-body div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* ── Typography ── */
+    .font-demo-heading {
+      font-family: 'ZtShago', 'Dela Gothic One', sans-serif;
+      font-size: 64px;
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .font-demo-sub {
+      font-family: 'Phudu', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      line-height: 1;
+      margin-bottom: 24px;
+      color: var(--gunmetal);
+      text-transform: uppercase;
+    }
+
+    .font-sample-box {
+      background: white;
+      border: 1px solid #e0e0d8;
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin: 20px 0;
+    }
+
+    .font-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gunmetal);
+      margin-bottom: 10px;
+    }
+
+    /* ── Code ── */
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      background: #f0f0e8;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background: var(--carbon);
+      color: #e0e0d0;
+      padding: 20px 24px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 16px 0;
+    }
+
+    /* ── Callout ── */
+    .callout {
+      border-left: 4px solid var(--orange);
+      background: #fff8f0;
+      padding: 16px 20px;
+      border-radius: 0 6px 6px 0;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .callout strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── Table ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    th {
+      background: var(--carbon);
+      color: var(--ivory);
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e0e0d8;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: #f5f5ec;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: white;
+      border: 1px solid #e0e0d8;
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 60px;
+    }
+
+    .toc h3 {
+      margin-top: 0;
+    }
+
+    .toc ol {
+      padding-left: 20px;
+    }
+
+    .toc li {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .toc a {
+      color: var(--carbon);
+      text-decoration: none;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .toc a:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    @media (max-width: 640px) {
+      .theme-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .doc-header h1 {
+        font-size: 52px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header class="doc-header">
+      <div class="version-tag">v1.3 · Design System</div>
+      <h1>B3YLAND D3SIGN SYST3M</h1>
+      <p>A complete reference for color palettes, themes, layout ratios, and typography standards used across the
+        website.</p>
+    </header>
+
+    <!-- Table of Contents -->
+    <nav class="toc">
+      <h3>Contents</h3>
+      <ol>
+        <li><a href="#palette">Base Palette</a></li>
+        <li><a href="#themes">Theme Matrix</a></li>
+        <li><a href="#temperature">Temperature & Mode</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#ratio">60-30-10 Layout Rule</a></li>
+        <li><a href="#sections">Section Design Patterns</a></li>
+        <li><a href="#icons">Icons &amp; Logos</a></li>
+        <li><a href="#images">Images</a></li>
+        <li><a href="#implementation">Implementation Guide</a></li>
+      </ol>
+    </nav>
+
+    <!-- 1. Base Palette -->
+    <section id="palette">
+      <h2>01 — Base Palette</h2>
+      <p>The foundation of the entire design system rests on three neutral anchors. Every theme builds outward from
+        these three values, using them as background canvases or text layers.</p>
+
+      <h3>Core Neutrals</h3>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#fdfdf1;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Ivory</div>
+            <div class="swatch-hex">#fdfdf1</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#1a1a1a;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Carbon Black</div>
+            <div class="swatch-hex">#1a1a1a</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#424242;border:1px solid #ddd;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Gunmetal</div>
+            <div class="swatch-hex">#424242</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Warm Accent Palette (Primary / Secondary / Tertiary)</h3>
+      <p>Used in all warm-temperature themes, regardless of day or night mode.</p>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#ff7900;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Primary: Harvest Orange</div>
+            <div class="swatch-hex">
+              <span>#ff7900</span>
+              <button class="copy-btn" onclick="copyHex('#ff7900')">COPY</button>
+            </div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#ffb31f;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Secondary: Amber Flame</div>
+            <div class="swatch-hex">
+              <span>#ffb31f</span>
+              <button class="copy-btn" onclick="copyHex('#ffb31f')">COPY</button>
+            </div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#f1432a;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Tertiary: Fiery Terracotta</div>
+            <div class="swatch-hex">
+              <span>#f1432a</span>
+              <button class="copy-btn" onclick="copyHex('#f1432a')">COPY</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Cool Accent Palette (Primary / Secondary / Tertiary)</h3>
+      <p>Used in all cool-temperature themes, regardless of day or night mode.</p>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#252e7d;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Primary: True Cobalt</div>
+            <div class="swatch-hex">
+              <span>#252e7d</span>
+              <button class="copy-btn" onclick="copyHex('#252e7d')">COPY</button>
+            </div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#b9e5f0;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Secondary: Day Blue</div>
+            <div class="swatch-hex">
+              <span>#b9e5f0</span>
+              <button class="copy-btn" onclick="copyHex('#b9e5f0')">COPY</button>
+            </div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#c8a2c8;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Tertiary: Lilac</div>
+            <div class="swatch-hex">
+              <span>#c8a2c8</span>
+              <button class="copy-btn" onclick="copyHex('#c8a2c8')">COPY</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Theme Matrix -->
+    <section id="themes">
+      <h2>02 — Theme Matrix</h2>
+      <p>The website offers four themes formed by combining two temperature settings (Warm / Cool) with two brightness
+        modes (Day / Night). The user selects their preference on first visit, and it can be changed anytime via
+        settings.</p>
+
+      <div class="theme-grid">
+
+        <!-- Day Warm -->
+        <div class="theme-card">
+          <div class="theme-card-header" style="background:#fdfdf1;color:#ff7900;border-bottom:1px solid #ebebdf;">☀️
+            Day · Warm</div>
+          <div class="theme-strips">
+            <div class="theme-strip" style="background:#fdfdf1;flex:6;border-right:1px solid #ebebdf;">
+              <span class="theme-strip-label" style="color:#424242;">Background 60%</span>
+            </div>
+            <div class="theme-strip" style="background:#ff7900;flex:3;">
+              <span class="theme-strip-label" style="color:#fdfdf1;">Primary 30%</span>
+            </div>
+            <div class="theme-strip" style="background:#ffb31f;flex:1;">
+              <span class="theme-strip-label" style="color:#1a1a1a;">Sec.</span>
+            </div>
+          </div>
+          <div class="theme-meta" style="background:#fdfdf1;">
+            <strong>Background:</strong> Ivory #fdfdf1<br>
+            <strong>Primary:</strong> Harvest Orange #ff7900<br>
+            <strong>Secondary:</strong> Amber Flame #ffb31f<br>
+            <strong>Tertiary:</strong> Fiery Terracotta #f1432a<br>
+            <strong>Text:</strong> Carbon Black #1a1a1a
+          </div>
+        </div>
+
+        <!-- Day Cool -->
+        <div class="theme-card">
+          <div class="theme-card-header" style="background:#fdfdf1;color:#252e7d;border-bottom:1px solid #ebebdf;">☀️
+            Day · Cool</div>
+          <div class="theme-strips">
+            <div class="theme-strip" style="background:#fdfdf1;flex:6;border-right:1px solid #ebebdf;">
+              <span class="theme-strip-label" style="color:#424242;">Background 60%</span>
+            </div>
+            <div class="theme-strip" style="background:#252e7d;flex:3;">
+              <span class="theme-strip-label" style="color:#b9e5f0;">Primary 30%</span>
+            </div>
+            <div class="theme-strip" style="background:#b9e5f0;flex:1;">
+              <span class="theme-strip-label" style="color:#252e7d;">Sec.</span>
+            </div>
+          </div>
+          <div class="theme-meta" style="background:#fdfdf1;">
+            <strong>Background:</strong> Ivory #fdfdf1<br>
+            <strong>Primary:</strong> True Cobalt #252e7d<br>
+            <strong>Secondary:</strong> Day Blue #b9e5f0<br>
+            <strong>Tertiary:</strong> Lilac #c8a2c8<br>
+            <strong>Text:</strong> Carbon Black #1a1a1a
+          </div>
+        </div>
+
+        <!-- Night Warm -->
+        <div class="theme-card">
+          <div class="theme-card-header" style="background:#424242;color:#ff7900;">🌙 Night · Warm</div>
+          <div class="theme-strips">
+            <div class="theme-strip" style="background:#424242;flex:6;border-right:1px solid #555;">
+              <span class="theme-strip-label" style="color:#fdfdf1;">Background 60%</span>
+            </div>
+            <div class="theme-strip" style="background:#ff7900;flex:3;">
+              <span class="theme-strip-label" style="color:#fdfdf1;">Primary 30%</span>
+            </div>
+            <div class="theme-strip" style="background:#ffb31f;flex:1;">
+              <span class="theme-strip-label" style="color:#1a1a1a;">Sec.</span>
+            </div>
+          </div>
+          <div class="theme-meta" style="background:#424242;color:#fdfdf1;">
+            <strong>Background:</strong> Gunmetal #424242<br>
+            <strong>Primary:</strong> Harvest Orange #ff7900<br>
+            <strong>Secondary:</strong> Amber Flame #ffb31f<br>
+            <strong>Tertiary:</strong> Fiery Terracotta #f1432a<br>
+            <strong>Text:</strong> Ivory #fdfdf1
+          </div>
+        </div>
+
+        <!-- Night Cool -->
+        <div class="theme-card">
+          <div class="theme-card-header" style="background:#1a1a1a;color:#b9e5f0;">🌙 Night · Cool</div>
+          <div class="theme-strips">
+            <div class="theme-strip" style="background:#1a1a1a;flex:6;border-right:1px solid #333;">
+              <span class="theme-strip-label" style="color:#fdfdf1;">Background 60%</span>
+            </div>
+            <div class="theme-strip" style="background:#252e7d;flex:3;">
+              <span class="theme-strip-label" style="color:#b9e5f0;">Primary 30%</span>
+            </div>
+            <div class="theme-strip" style="background:#b9e5f0;flex:1;">
+              <span class="theme-strip-label" style="color:#252e7d;">Sec.</span>
+            </div>
+          </div>
+          <div class="theme-meta" style="background:#1a1a1a;color:#fdfdf1;">
+            <strong>Background:</strong> Carbon Black #1a1a1a<br>
+            <strong>Primary:</strong> True Cobalt #252e7d<br>
+            <strong>Secondary:</strong> Day Blue #b9e5f0<br>
+            <strong>Tertiary:</strong> Lilac #c8a2c8<br>
+            <strong>Text:</strong> Ivory #fdfdf1
+          </div>
+        </div>
+
+      </div>
+
+      <div class="callout">
+        <strong>Note on Night Warm</strong>
+        Night Warm is the only theme where the background shifts to <strong>Gunmetal (#424242)</strong> instead of
+        Carbon Black. This keeps the warm tones feeling earthy and rich rather than stark — Carbon Black alongside
+        orange could feel harsh.
+      </div>
+    </section>
+
+    <!-- 3. Temperature & Mode -->
+    <section id="temperature">
+      <h2>03 — Temperature & Mode</h2>
+      <p>The two axes users control are <strong>temperature</strong> and <strong>brightness</strong>. These are
+        independent settings that can be combined freely.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Setting</th>
+            <th>Options</th>
+            <th>What it controls</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Temperature</strong></td>
+            <td>Warm / Cool</td>
+            <td>The accent palette — warm gives orange/amber/terracotta, cool gives cobalt/blue/lilac</td>
+          </tr>
+          <tr>
+            <td><strong>Mode</strong></td>
+            <td>Day / Night</td>
+            <td>The background canvas — day uses Ivory, night uses Carbon Black (or Gunmetal for warm)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>CSS Variable Mapping</h3>
+      <p>All components consume semantic tokens only — never raw hex values. This makes theme-switching a single
+        attribute change on <code>&lt;html&gt;</code> or <code>&lt;body&gt;</code>.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>Role</th>
+            <th>Used For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>--background</code></td>
+            <td>60%</td>
+            <td>Page background, section fills</td>
+          </tr>
+          <tr>
+            <td><code>--primary</code></td>
+            <td>30%</td>
+            <td>Nav, CTAs, cards, prominent UI elements</td>
+          </tr>
+          <tr>
+            <td><code>--secondary</code></td>
+            <td>10%</td>
+            <td>Accents, badges, highlights, borders</td>
+          </tr>
+          <tr>
+            <td><code>--tertiary</code></td>
+            <td>optional 10%</td>
+            <td>Extra accent when 60-10-10-10 split used</td>
+          </tr>
+          <tr>
+            <td><code>--foreground</code></td>
+            <td>—</td>
+            <td>All body text</td>
+          </tr>
+          <tr>
+            <td><code>--surface</code></td>
+            <td>—</td>
+            <td>Cards, modals, elevated containers</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Switching Themes in Code</h3>
+      <pre>// Set theme via data-attribute on &lt;html&gt;
+document.documentElement.setAttribute('data-theme', 'night-cool');
+
+// Tailwind class usage (semantic tokens always)
+&lt;div className="bg-background text-foreground"&gt;
+  &lt;button className="bg-primary text-background"&gt;CTA&lt;/button&gt;
+  &lt;span className="bg-secondary"&gt;Badge&lt;/span&gt;
+&lt;/div&gt;</pre>
+    </section>
+
+    <!-- 4. Typography -->
+    <section id="typography">
+      <h2>04 — Typography</h2>
+      <p>Typography is split into three distinct roles: a proprietary display font for H1, a bold variable heading
+        typeface for H2&ndash;H6, and a clean semi-bold sans-serif for all body copy.</p>
+
+      <!-- Font 1: ZtShago -->
+      <h3>H1 Display Font &mdash; ZtShago ExtraBold</h3>
+      <p><strong>ZtShago ExtraBold</strong> is a self-hosted woff2 file served from
+        <code>/fonts/ZtShago-ExtraBold.woff2</code>.
+        It is the flagship display font for all H1 hero headlines — bold, architectural, and unmistakeably B3YLAND.
+        Fallback stack: <strong>Dela Gothic One &rarr; sans-serif</strong>.
+      </p>
+
+      <div class="font-sample-box">
+        <div class="font-label">H1 &mdash; ZtShago ExtraBold / falls back to Dela Gothic One</div>
+        <div class="font-demo-heading">The Quick Brown Fox</div>
+      </div>
+
+      <div class="callout">
+        <strong>Dela Gothic One &mdash; UX Fallback Only</strong>
+        Dela Gothic One is <em>not</em> part of the brand type system. It is loaded exclusively as an
+        immediate visual placeholder for H1 while the ZtShago woff2 file fetches from our own server.
+        Once ZtShago has loaded and cached, Dela Gothic One is never rendered. Do not use it for any
+        intentional typographic purpose.
+      </div>
+
+      <!-- Font 2: Phudu -->
+      <h3>H2 &ndash; H6 Heading Font &mdash; Phudu</h3>
+      <p><strong>Phudu</strong> (Google Fonts, variable weight 300&ndash;900) is used for all section headings H2
+        through
+        H6. It is a geometric, condensed display typeface that pairs with ZtShago while remaining distinct from it.
+        Used at <code>font-weight: 900</code> and <code>text-transform: uppercase</code>. Fallback: sans-serif.</p>
+
+      <div class="font-sample-box">
+        <div class="font-label">H2 &mdash; Phudu 900 / 42px</div>
+        <div class="font-demo-sub">Design Meets Intention</div>
+        <div class="font-label">H3 &mdash; Phudu 900 / 28px</div>
+        <div
+          style="font-family:'Phudu',sans-serif;font-size:28px;font-weight:900;letter-spacing:1px;margin-bottom:8px;color:#424242;text-transform:uppercase;">
+          Section Subheading</div>
+        <div class="font-label">H4&ndash;H6 &mdash; Phudu 900 / 20px</div>
+        <div
+          style="font-family:'Phudu',sans-serif;font-size:20px;font-weight:900;letter-spacing:1px;color:#424242;text-transform:uppercase;">
+          Minor Heading Level</div>
+      </div>
+
+      <!-- Font 3: DM Sans -->
+      <h3>Body / UI Font &mdash; DM Sans</h3>
+      <p><strong>DM Sans</strong> is used for all body copy, UI labels, captions, inputs, and navigation text.
+        It is loaded from Google Fonts as an optical-size variable font (9 to 40px). Default weight is <strong>600
+          (Semibold)</strong>. Bold passages use weight 700.</p>
+
+      <div class="font-sample-box">
+        <div class="font-label">Body &mdash; DM Sans 600 / 16px / line-height 1.7</div>
+        <p style="margin:0;font-family:'DM Sans',sans-serif;font-weight:600;">The body typeface is DM Sans at semibold
+          (wght 600). This weight choice is deliberate: the B3YLAND warm palette &mdash; Harvest Orange, Amber Flame,
+          and Ivory &mdash; has inherently low contrast on certain backgrounds. A semibold default ensures body text
+          remains crisp and legible without relying on color alone. Bold elements (labels, captions) use wght 700.</p>
+        <div class="font-label" style="margin-top:16px;">DM Sans 700 &mdash; Bold / labels &amp; emphasis</div>
+        <p style="margin:0;font-family:'DM Sans',sans-serif;font-weight:700;">Bold text sample &mdash; for labels,
+          strong emphasis, and UI metadata.</p>
+        <div class="font-label" style="margin-top:16px;">DM Sans 400 &mdash; Regular (available but not default)</div>
+        <p style="margin:0;font-family:'DM Sans',sans-serif;font-weight:400;">Regular weight sample &mdash; avoid using
+          as default body weight, use 600 instead for legibility.</p>
+      </div>
+
+      <div class="callout">
+        <strong>Why DM Sans at Semibold (600)?</strong>
+        The B3YLAND warm-palette themes use Ivory (#fdfdf1) as a background and Harvest Orange (#ff7900) as the
+        primary color. These hues have reduced contrast ratios compared to classic dark-on-white setups. Setting
+        the body font to <code>font-weight: 600</code> by default compensates for this — text reads as confidently
+        bold without needing to increase font size or add drop shadows. This is a deliberate accessibility and
+        brand-voice decision: B3YLAND copy should feel assertive, never thin.
+      </div>
+
+      <h3>Tailwind Usage</h3>
+      <pre>&lt;!-- H1 display (ZtShago / Dela Gothic One fallback) --&gt;
+&lt;h1 className="font-display uppercase"&gt;Page Title&lt;/h1&gt;
+
+&lt;!-- H2–H6 section headings (Phudu) --&gt;
+&lt;h2 className="font-heading uppercase"&gt;Section Title&lt;/h2&gt;
+
+&lt;!-- Body copy (DM Sans semibold by default) --&gt;
+&lt;p className="font-body text-base leading-relaxed"&gt;...&lt;/p&gt;</pre>
+
+      <h3>Font Token Summary</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Tailwind Class</th>
+            <th>Font</th>
+            <th>Weight</th>
+            <th>Used For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>font-display</code></td>
+            <td>ZtShago &rarr; Dela Gothic One</td>
+            <td>800</td>
+            <td>H1 hero headlines only</td>
+          </tr>
+          <tr>
+            <td><code>font-heading</code></td>
+            <td>Phudu</td>
+            <td>900</td>
+            <td>H2 through H6 section headings</td>
+          </tr>
+          <tr>
+            <td><code>font-body</code></td>
+            <td>DM Sans</td>
+            <td>600 (default) / 700 (bold)</td>
+            <td>All body copy, UI labels, captions</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Character Infrastructure & L33T Rules</h3>
+      <p>B3YLAND employs a strict character infrastructure for all display text. This ensures the brand remains distinct
+        and technical in its presentation.</p>
+
+      <div class="font-sample-box">
+        <div class="font-label">Rule 01 — Full Uppercase</div>
+        <p>All headers (H1 through H6) must be delivered in <strong>uppercase</strong>. No sentence casing is permitted
+          for heading-level data.</p>
+
+        <div class="font-label" style="margin-top:20px;">Rule 02 — Highest Weight Alignment</div>
+        <p>Headings must always occupy the highest available font weight for their respective family.
+          (ZtShago: <strong>800</strong> | Phudu: <strong>900</strong>).</p>
+
+        <div class="font-label" style="margin-top:20px;">Rule 03 — L33T Replacement (H1 Only)</div>
+        <p>For all top-level H1 data, the letter <strong>'E'</strong> is strictly replaced with the numeric
+          <strong>'3'</strong> to mirror the brand wordmark architecture.
+        </p>
+
+        <div style="margin-top:16px; border-top:1px solid #eee; padding-top:16px;">
+          <div class="font-label" style="margin-top:10px;">PROPER H1 EXECUTION:</div>
+          <div
+            style="font-family:'ZtShago','Dela Gothic One',sans-serif;font-weight:800;font-size:40px;letter-spacing:2px; line-height:1;">
+            ARCHIT3CTING INFRASTRUCTUR3</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 60-30-10 Rule -->
+    <section id="ratio">
+      <h2>05 — The 60-30-10 Rule</h2>
+      <p>Every section of the website follows the classic interior-design color ratio. This creates visual hierarchy
+        without chaos — the eye knows exactly where to look.</p>
+
+      <h3>Standard Ratio — 60 · 30 · 10</h3>
+      <div class="ratio-diagram">
+        <div class="ratio-seg" style="background:var(--ivory);flex:6;border-right:2px solid #ddd;">
+          <span style="color:#1a1a1a;">60</span>
+          <span style="color:#424242;">Background</span>
+        </div>
+        <div class="ratio-seg" style="background:var(--orange);flex:3;border-right:2px solid #ddd;">
+          <span style="color:#fff;">30</span>
+          <span style="color:#fff;">Primary</span>
+        </div>
+        <div class="ratio-seg" style="background:var(--amber);flex:1;">
+          <span style="color:#1a1a1a;">10</span>
+          <span style="color:#1a1a1a;">Secondary</span>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Percentage</th>
+            <th>Token</th>
+            <th>Role</th>
+            <th>Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>60%</strong></td>
+            <td><code>--background</code></td>
+            <td>Dominant canvas</td>
+            <td>Page background, section fills, hero area</td>
+          </tr>
+          <tr>
+            <td><strong>30%</strong></td>
+            <td><code>--primary</code></td>
+            <td>Main brand color</td>
+            <td>Navigation, cards, primary CTA buttons, sidebars</td>
+          </tr>
+          <tr>
+            <td><strong>10%</strong></td>
+            <td><code>--secondary</code></td>
+            <td>Accent pop</td>
+            <td>Badges, hover states, underlines, icons, borders</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Extended Ratio — 60 · 20 · 10 · 10</h3>
+      <p>Some sections — particularly feature showcases, stat grids, or comparison layouts — benefit from a four-way
+        color split. In these cases the dominant 60% canvas is supported by a 20% primary accent, followed by two 10%
+        slices
+        for secondary and tertiary highlights.</p>
+
+      <div class="ratio-diagram ratio-diagram-alt">
+        <div class="ratio-seg" style="background:var(--ivory);flex:6;border-right:2px solid #ddd;">
+          <span style="color:#1a1a1a;">60</span>
+          <span style="color:#424242;">BG</span>
+        </div>
+        <div class="ratio-seg" style="background:var(--orange);flex:2;border-right:1px solid #ddd;">
+          <span style="color:#fff;font-size:16px !important;">20</span>
+          <span style="color:#fff;">Pri.</span>
+        </div>
+        <div class="ratio-seg" style="background:var(--amber);flex:1;border-right:1px solid #ddd;">
+          <span style="color:#1a1a1a;font-size:16px !important;">10</span>
+          <span style="color:#1a1a1a;">Sec.</span>
+        </div>
+        <div class="ratio-seg" style="background:var(--terra);flex:1;">
+          <span style="color:#fff;font-size:16px !important;">10</span>
+          <span style="color:#fff;">Ter.</span>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>When to use 60-20-10-10</strong>
+        Use the 60-20-10-10 split for the most important "High Impact" sections (like the Hero) where all three brand
+        accents work together to establish the visual hierarchy. This is the ultimate expression of the brand's
+        character infrastructure.
+      </div>
+    </section>
+
+    <!-- 6. Section Design Patterns -->
+    <section id="sections">
+      <h2>06 — Section Design Patterns</h2>
+      <p>Each type of section has a recommended color distribution. The patterns below show how the 60-30-10 rule maps
+        to real UI contexts.</p>
+
+      <h3>Section Background Flow (Mandatory Sequence)</h3>
+      <p>To maintain visual rhythm and brand authority, the sequence of section backgrounds on a single page must follow
+        this rigid infrastructure:</p>
+
+      <div class="font-sample-box" style="padding: 16px 20px; font-size: 13px;">
+        <ol style="margin: 0; padding-left: 20px; line-height: 2;">
+          <li><strong>Step 01: HERO SECTION</strong> — Must use <strong>Primary</strong> Background.</li>
+          <li><strong>Step 02: TRANSITION</strong> — Core <strong>Neutral</strong> (Ivory / Carbon Black). <span
+              style="opacity:0.6;">(Never Gunmetal)</span></li>
+          <li><strong>Step 03: SECONDARY IMPACT</strong> — Must use <strong>Secondary</strong> Background.</li>
+          <li><strong>Step 04: TRANSITION</strong> — Core <strong>Neutral</strong> (Ivory / Carbon Black). <span
+              style="opacity:0.6;">(Never Gunmetal)</span></li>
+          <li><strong>Step 05: TERTIARY COMPLETION</strong> — Use <strong>Tertiary</strong> Background only after
+            Primary and Secondary have been deployed.</li>
+        </ol>
+      </div>
+
+      <div class="callout" style="border-left-color: var(--carbon); background: #f9f9f9;">
+        <strong>Rule on Neutrals:</strong> Standard sections must use pure Neutrals (Ivory or Carbon Black).
+        <em>Gunmetal</em> is reserved for specific rare structural components and should not be used as a general
+        section background.
+      </div>
+
+      <div class="section-examples">
+
+        <div class="section-ex">
+          <div class="section-ex-label">NAVIGATION BAR — 60-30-10 RATIO</div>
+          <div class="section-ex-body">
+            <div style="background:#fdfdf1;flex:6;color:#ff7900;padding:0 24px;justify-content:flex-start;gap:24px;">
+              <span
+                style="font-family:'ZtShago','Dela Gothic One',sans-serif;font-weight:800;font-size:18px;">B3YLAND</span>
+            </div>
+            <div style="background:#fdfdf1;flex:3;color:#ff7900;font-size:11px;justify-content:flex-start;">
+              <span>MOD3 &nbsp; ARCHIV3 &nbsp; STRAT3GY</span>
+            </div>
+            <div style="background:#ffb31f;flex:1;color:#ff7900;font-weight:900;font-size:11px;">CTA</div>
+          </div>
+        </div>
+
+        <div class="section-ex">
+          <div class="section-ex-label">HERO / LANDING SECTION — HIGH IMPACT (PRIMARY BG)</div>
+          <div class="section-ex-body">
+            <div
+              style="background:#ff7900;flex:9;color:#fdfdf1;font-size:11px;padding:0 24px;gap:8px;flex-direction:column;display:flex;justify-content:center;align-items:flex-start;">
+              <span
+                style="font-family:'ZtShago','Dela Gothic One',sans-serif;font-weight:800;font-size:24px;color:#fdfdf1;">ARCHIT3CTING
+                INFRASTRUCTUR3</span>
+              <span style="font-size:10px;opacity:0.8;">TH3 SYST3MS THAT BUILD TH3 WORLD.</span>
+            </div>
+            <div style="background:#ffb31f;flex:1;color:#ff7900;font-weight:900;font-size:11px;">BUILD</div>
+          </div>
+        </div>
+
+
+
+        <div class="section-ex">
+          <div class="section-ex-label">FEATURE GRID — 60-10-10-10 (THREE-WAY SPLIT)</div>
+          <div class="section-ex-body">
+            <div style="background:#fdfdf1;flex:6;color:#424242;">Section BG</div>
+            <div style="background:#ff7900;flex:1;color:#fff;border-left:2px solid #ddd;">F1</div>
+            <div style="background:#ffb31f;flex:1;color:#1a1a1a;border-left:1px solid #ddd;">F2</div>
+            <div style="background:#f1432a;flex:1;color:#fff;border-left:1px solid #ddd;">F3</div>
+          </div>
+          <div
+            style="background:#fff8f0; padding: 10px 14px; font-size: 11px; border-top: 1px solid rgba(0,0,0,0.05); color: #885522;">
+            <strong>MANDATORY:</strong> At least one section in every page should use the tertiary color for the
+            background.
+          </div>
+        </div>
+
+        <div class="section-ex">
+          <div class="section-ex-label">FOOTER — PRIMARY BACKGROUND, SECONDARY ACCENTS</div>
+          <div class="section-ex-body">
+            <div style="background:#ff7900;flex:9;color:#fdfdf1;padding:0 24px;justify-content:flex-start;gap:24px;">
+              <span style="font-size:11px;opacity:0.9;">© 2025 Brand · Links · Legal</span>
+            </div>
+            <div style="background:#ffb31f;flex:1;color:#1a1a1a;">↑</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 8. Icons & Logos -->
+    <section id="icons">
+      <h2>08 &mdash; Icons &amp; Logos</h2>
+      <p>B3YLAND uses two icon libraries plus a proprietary logo system. Each has a defined role &mdash; no mixing of
+        systems within the same UI context.</p>
+
+      <h3>UI Icons &mdash; Google Material Icons</h3>
+      <p><strong>Google Material Icons</strong> are used for all functional UI icons: navigation, actions, status, form
+        controls. Use <code>outlined</code> or <code>round</code> variants for a lighter aesthetic. Loaded via Google
+        Fonts CDN in <code>layout.tsx</code>.</p>
+      <div class="font-sample-box">
+        <div class="font-label">Material Icons &mdash; three style variants available</div>
+        <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:12px;">
+          <div style="text-align:center;"><span class="material-icons" style="font-size:32px;color:#ff7900;">home</span>
+            <div class="font-label" style="margin-top:4px;">home</div>
+          </div>
+          <div style="text-align:center;"><span class="material-icons"
+              style="font-size:32px;color:#ff7900;">wb_sunny</span>
+            <div class="font-label" style="margin-top:4px;">wb_sunny</div>
+          </div>
+          <div style="text-align:center;"><span class="material-icons-outlined"
+              style="font-size:32px;color:#ff7900;">dark_mode</span>
+            <div class="font-label" style="margin-top:4px;">dark_mode (outlined)</div>
+          </div>
+          <div style="text-align:center;"><span class="material-icons-round"
+              style="font-size:32px;color:#ff7900;">settings</span>
+            <div class="font-label" style="margin-top:4px;">settings (round)</div>
+          </div>
+          <div style="text-align:center;"><span class="material-icons" style="font-size:32px;color:#ff7900;">menu</span>
+            <div class="font-label" style="margin-top:4px;">menu</div>
+          </div>
+          <div style="text-align:center;"><span class="material-icons"
+              style="font-size:32px;color:#ff7900;">arrow_forward</span>
+            <div class="font-label" style="margin-top:4px;">arrow_forward</div>
+          </div>
+        </div>
+        <pre style="margin-top:16px;">&lt;span class="material-icons"&gt;wb_sunny&lt;/span&gt;
+&lt;span class="material-icons-outlined"&gt;dark_mode&lt;/span&gt;
+&lt;span class="material-icons-round"&gt;settings&lt;/span&gt;</pre>
+      </div>
+
+      <h3>Brand / Social Icons &mdash; FontAwesome Free Brands</h3>
+      <p><strong>FontAwesome Free Brands</strong> are used exclusively for social media and platform icons in the
+        Footer. Never use Material Icons for brand logos.</p>
+      <div class="font-sample-box">
+        <div class="font-label">Brands used in Footer &mdash; via @fortawesome/free-brands-svg-icons</div>
+        <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:12px;">
+          <div style="text-align:center;"><i class="fa-brands fa-instagram" style="font-size:28px;color:#ff7900;"></i>
+            <div class="font-label" style="margin-top:6px;">faInstagram</div>
+          </div>
+          <div style="text-align:center;"><svg viewBox="0 0 24 24" fill="#ff7900" width="28" height="28">
+              <path
+                d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z" />
+            </svg>
+            <div class="font-label" style="margin-top:6px;">Substack (SVG)</div>
+          </div>
+          <div style="text-align:center;"><i class="fa-brands fa-pinterest-p" style="font-size:28px;color:#ff7900;"></i>
+            <div class="font-label" style="margin-top:6px;">faPinterestP</div>
+          </div>
+          <div style="text-align:center;"><i class="fa-brands fa-behance" style="font-size:28px;color:#ff7900;"></i>
+            <div class="font-label" style="margin-top:6px;">faBehance</div>
+          </div>
+        </div>
+        <pre style="margin-top:16px;">import { faInstagram, faBehance, faPinterestP } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+// Substack has no FA Free icon  use the inline SVG component
+&lt;FontAwesomeIcon icon={faInstagram} /&gt;
+&lt;SubstackIcon /&gt;  {/* custom SVG */}</pre>
+      </div>
+
+      <h3>Logo System &mdash; B3YLAND Brand Marks</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Variant</th>
+            <th>File</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nav Black (Day)</td>
+            <td><code>/logos/B3YLAND_BLCK.svg</code></td>
+            <td>Navbar on light background</td>
+          </tr>
+          <tr>
+            <td>Nav White (Night)</td>
+            <td><code>/logos/B3YLAND_WHITE.svg</code></td>
+            <td>Navbar on dark background / Footer in Warm mode</td>
+          </tr>
+          <tr>
+            <td>Theme Pop (Color)</td>
+            <td><code>/logos/B3YLAND_COLOR.svg</code></td>
+            <td>Yellow/Orange brand pops (Cool mode Footer)</td>
+          </tr>
+          <tr>
+            <td>White Full (WebP)</td>
+            <td><code>/logos/B3YLAND WHITE .webp</code></td>
+            <td>Ambient background "clouds" decoration</td>
+          </tr>
+          <tr>
+            <td>White Short (WebP)</td>
+            <td><code>/logos/B3YLAND WHITE  SHORTENED .webp</code></td>
+            <td>Small brand slots / legacy fallbacks</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Bullet Points &amp; Separators</h3>
+      <p>All bullet points used in multi-layer lists or feature grids must use the diamond symbol: <strong>◆
+          (U+25C6)</strong>. Standard dashes, dots, or ASCII bullets are prohibited for brand infrastructure lists.</p>
+
+      <h3>Floating Cloud Effect</h3>
+      <p>The white logo is used as an ambient site decoration &mdash; drifting "clouds" at randomised positions. Each
+        cloud is a <strong>double-layer pair</strong>: a blurred shadow copy (opacity 6%, blur 6px, offset 6px) sits
+        behind, and a brighter foreground copy (opacity 11%) sits on top. Both are semi-transparent. Clouds link to
+        <code>#work</code> (case studies).
+      </p>
+      <div class="font-sample-box"
+        style="background:#1a1a1a;border-color:#333;position:relative;min-height:150px;overflow:hidden;">
+        <div class="font-label" style="color:#888;margin-bottom:8px;">Cloud pair demo (on dark surface)</div>
+        <img src="/logos/B3YLAND WHITE .webp" alt=""
+          style="position:absolute;top:30px;left:60px;width:120px;opacity:0.06;filter:blur(6px);transform:translate(6px,6px);" />
+        <img src="/logos/B3YLAND WHITE .webp" alt="B3YLAND"
+          style="position:absolute;top:30px;left:60px;width:120px;opacity:0.11;" />
+        <p
+          style="position:absolute;bottom:12px;left:20px;font-size:11px;color:#444;letter-spacing:2px;text-transform:uppercase;">
+          Shadow 6% + Foreground 11% &mdash; both semi-transparent</p>
+      </div>
+      <div class="callout">
+        <strong>Pointer Event Model:</strong> The cloud wrapper div is <code>pointer-events: none</code>. Only the
+        <code>&lt;a&gt;</code> anchor has <code>pointer-events: auto</code>, so clouds never block page interaction.
+        Anchors use <code>tabIndex=&#x7B;-1&#x7D;</code> to stay out of keyboard tab order.
+      </div>
+    </section>
+
+    <!-- 09. Images -->
+    <section id="images">
+      <h2>09 &mdash; Images</h2>
+      <p>Images in B3YLAND layouts follow a strict split ratio rule that prioritises content hierarchy. Two orientation
+        modes exist: <strong>landscape</strong> (wider than tall) and <strong>portrait</strong> (taller than wide). Each
+        maps to a different column ratio.</p>
+
+      <h3>65 / 35 &mdash; Landscape Mode</h3>
+      <p>For landscape photos (wide, cinematic, environment shots). The image occupies <strong>65% of the row
+          width</strong>, and the content section occupies the remaining <strong>35%</strong>. Image is always placed
+        adjacent to content, never below it on desktop.</p>
+
+      <div class="section-ex">
+        <div class="section-ex-label">LANDSCAPE — 65% IMAGE | 35% CONTENT</div>
+        <div class="section-ex-body" style="height:100px;">
+          <div
+            style="flex:6.5;background:#1a1a1a;display:flex;align-items:flex-end;justify-content:space-between;padding:8px 10px;position:relative;">
+            <span
+              style="font-family:monospace;font-size:9px;color:#fff;opacity:0.6;letter-spacing:1px;font-weight:400;">9.0765&deg;
+              N / 7.3986&deg; E</span>
+            <span
+              style="font-family:monospace;font-size:8px;color:#fff;opacity:0.7;letter-spacing:2px;font-weight:700;">[CREATIVE_STUDIO]</span>
+          </div>
+          <div
+            style="flex:3.5;background:#fdfdf1;padding:10px 14px;display:flex;flex-direction:column;justify-content:center;font-size:11px;color:#1a1a1a;">
+            <span style="font-weight:700;margin-bottom:4px;">Section Content</span>
+            <span style="opacity:0.6;">Heading, body copy, CTAs</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>35 / 65 &mdash; Portrait Mode</h3>
+      <p>For portrait photos (vertical, human-scale, candid). The image occupies <strong>35% of the row
+          width</strong>, and the content occupies <strong>65%</strong>. Portrait images should never be stretched into
+        landscape containers.</p>
+
+      <div class="section-ex">
+        <div class="section-ex-label">PORTRAIT — 35% IMAGE | 65% CONTENT</div>
+        <div class="section-ex-body" style="height:100px;">
+          <div
+            style="flex:3.5;background:#1a1a1a;display:flex;align-items:flex-end;justify-content:space-between;padding:8px 10px;">
+            <span
+              style="font-family:monospace;font-size:8px;color:#fff;opacity:0.7;letter-spacing:2px;font-weight:700;">[FOUNDER_PORTRAIT]</span>
+          </div>
+          <div
+            style="flex:6.5;background:#fdfdf1;padding:10px 14px;display:flex;flex-direction:column;justify-content:center;font-size:11px;color:#1a1a1a;">
+            <span style="font-weight:700;margin-bottom:4px;">Section Content</span>
+            <span style="opacity:0.6;">Heading, body copy, CTAs</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Image Overlay System</h3>
+      <p>Every BrandImage has two data overlays rendered directly on the photo. These are always white text with varying
+        opacity &mdash; never use brand colours on top of photos.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Overlay</th>
+            <th>Position</th>
+            <th>Style</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>GPS Coordinates</strong></td>
+            <td>Top-right</td>
+            <td>Monospace, weight 400, opacity 55%</td>
+            <td><code>40.6892&deg; N / 74.0445&deg; W</code></td>
+          </tr>
+          <tr>
+            <td><strong>Alt Label</strong></td>
+            <td>Bottom-left</td>
+            <td>Monospace, weight 700, opacity 75%, uppercase</td>
+            <td><code>[FOUNDERS_MEETING_ROOM]</code> &larr; from alt="founders meeting room"</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <strong>Alt Label Transformation Rule</strong>
+        The <code>alt</code> attribute value is transformed at render time: spaces become underscores, all characters
+        uppercased, wrapped in square brackets. Example: <code>alt="system origin"</code> &rarr; <strong
+          style="font-family:monospace;">[SYSTEM_ORIGIN]</strong>.
+      </div>
+
+      <h3>Gradient Scrim</h3>
+      <p>A soft gradient scrim is applied over the image to ensure overlay legibility:</p>
+      <pre>background: linear-gradient(
+  to top,
+  rgba(0,0,0,0.55) 0%,   /* bottom: alt label */
+  rgba(0,0,0,0.00) 45%,  /* clear mid */
+  rgba(0,0,0,0.28) 100%  /* top: coordinates */
+);</pre>
+
+      <h3>Mobile Border Treatment</h3>
+      <p>On mobile viewports, the image sits flush at the <strong>bottom</strong> of its section container. The three
+        remaining sides (top, left, right) receive <strong>2px solid borders</strong>. These borders <strong>must be
+          theme-aware</strong> &mdash; using CSS variables to ensure correct contrast as the site switches between
+        Warm and Cool palettes.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Border Edge</th>
+            <th>Style Rule</th>
+            <th>Implementation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Top + Right Border</td>
+            <td>2px Solid &mdash; Primary Accent</td>
+            <td><code>var(--primary)</code></td>
+          </tr>
+          <tr>
+            <td>Left Border</td>
+            <td>2px Solid &mdash; Secondary Accent</td>
+            <td><code>var(--secondary)</code></td>
+          </tr>
+          <tr>
+            <td>Bottom Border</td>
+            <td>None (Flush to container)</td>
+            <td><code>0px / none</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <h3>BrandImage Component API</h3>
+      <pre>interface BrandImageProps {
+  src: string;                 // Remote image URL (Unsplash CDN / approved sources)
+  alt: string;                 // Plain English alt &rarr; transformed to [ALT_LABEL]
+  orientation?: "landscape"    // default: landscape (65% image slot)
+             | "portrait";     // 35% image slot
+  lat?: string;                // "9.0765&deg; N"
+  lon?: string;                // "7.3986&deg; E"
+  mobileBorders?: [            // [top+right, left] border colours
+    string, string
+  ];
+}
+
+// Usage example
+&lt;BrandImage
+  src="https://images.unsplash.com/photo-XXXXX?w=1600&amp;q=85&amp;fit=crop"
+  alt="founders meeting room"
+  orientation="portrait"
+  lat="9.0765&deg; N"
+  lon="7.3986&deg; E"
+  mobileBorders={['#ffb31f', '#f1432a']}
+  className="absolute inset-0 h-full"
+/&gt;</pre>
+    </section>
+
+    <!-- 7. Implementation Guide -->
+    <section id="implementation">
+      <h2>07 — Implementation Guide</h2>
+
+      <h3>1. Font setup in globals.css</h3>
+      <pre>/* Google Font imports */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Phudu:wght@300..900&display=swap');
+/* Dela Gothic One — load-time placeholder for ZtShago only (NOT brand typography) */
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+
+/* Local custom font */
+@font-face {
+  font-family: 'ZtShago';
+  src: url('/fonts/ZtShago-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+body { font-family: 'DM Sans', sans-serif; font-weight: 600; }
+h1   { font-family: 'ZtShago', 'Dela Gothic One', sans-serif; font-weight: 800; }
+h2, h3, h4, h5, h6 { font-family: 'Phudu', sans-serif; font-weight: 900; }</pre>
+
+      <h3>2. tailwind.config.js fontFamily</h3>
+      <pre>fontFamily: {
+  display: ["ZtShago", "Dela Gothic One", "sans-serif"], // H1 display (Dela Gothic = UX fallback only)
+  heading:  ["Phudu", "sans-serif"],                     // H2–H6
+  body:     ["DM Sans", "sans-serif"],                   // body / UI (semibold 600 default)
+},</pre>
+
+      <h3>3. Theme Switcher (Client Component)</h3>
+      <pre>'use client';
+
+const themes = ['day-warm', 'day-cool', 'night-warm', 'night-cool'];
+
+export function ThemeSwitcher() {
+  const setTheme = (theme: string) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  };
+
+  return (
+    &lt;div&gt;
+      {/* Step 1: Brightness */}
+      &lt;button onClick={() =&gt; setTheme('day-warm')}&gt;Day&lt;/button&gt;
+      &lt;button onClick={() =&gt; setTheme('night-cool')}&gt;Night&lt;/button&gt;
+      {/* Step 2: Temperature */}
+      &lt;button onClick={() =&gt; setTheme('day-warm')}&gt;🔥 Warm&lt;/button&gt;
+      &lt;button onClick={() =&gt; setTheme('day-cool')}&gt;❄️ Cool&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+
+      <h3>4. Component Color Rules</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Background</th>
+            <th>Text</th>
+            <th>Accent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Page / Section</td>
+            <td>bg-background</td>
+            <td>text-foreground</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Navbar</td>
+            <td>bg-primary</td>
+            <td>text-background</td>
+            <td>border-secondary</td>
+          </tr>
+          <tr>
+            <td>Primary Button</td>
+            <td>bg-primary</td>
+            <td>text-background</td>
+            <td>hover:bg-secondary</td>
+          </tr>
+          <tr>
+            <td>Card</td>
+            <td>bg-surface</td>
+            <td>text-foreground</td>
+            <td>border-secondary</td>
+          </tr>
+          <tr>
+            <td>Badge / Tag</td>
+            <td>bg-secondary</td>
+            <td>text-foreground</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Footer</td>
+            <td>bg-primary</td>
+            <td>text-background (night-cool: day-blue)</td>
+            <td>text-secondary</td>
+          </tr>
+          <tr>
+            <td>World Clocks</td>
+            <td>—</td>
+            <td>Live JS Time (ABJ, LDN, NYC)</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Divider / Rule</td>
+            <td>—</td>
+            <td>—</td>
+            <td>border-secondary</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <strong>Golden Rule</strong>
+        Never hardcode a hex color in a component. Always use the semantic Tailwind tokens (<code>bg-background</code>,
+        <code>text-primary</code>, etc.) so theme switching works automatically across all four themes without any extra
+        logic.
+      </div>
+
+      <div class="callout" style="border-left-color: #f1432a;">
+        <strong>Accessibility Note: <code>var(--secondary)</code> / Amber Flame</strong><br />
+        In the <code>day-warm</code> theme, the secondary color maps to <strong>Amber Flame (#ffb31f)</strong>. Amber
+        Flame does not have sufficient contrast against Ivory (var(--background)) or Harvest Orange (var(--primary)) to
+        be legible at small sizes.
+        <br /><br />
+        <strong>CRITICAL RULE:</strong> Never use <code>var(--secondary)</code> for body text, paragraphs, or small link
+        labels (especially in the Footer). Reserve it strictly for large typography (like H1 tags or massive metrics) or
+        thick borders where low contrast is stylized and acceptable.
+      </div>
+    </section>
+
+  </div>
+  <script>
+    function copyHex(hex) {
+      navigator.clipboard.writeText(hex).then(() => {
+        const btn = event.target;
+        const originalText = btn.innerText;
+        btn.innerText = 'COPIED!';
+        btn.style.background = '#22cc88';
+        btn.style.color = 'white';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 1500);
+      });
+    }
+  </script>
+</body>
+
+</html>
