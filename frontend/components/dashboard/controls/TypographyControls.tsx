@@ -139,7 +139,7 @@ export function TypographyControls() {
         <LabeledSlider label="Body Weight" value={typography.bodyWeight} min={300} max={700} step={100} onChange={v => { updateSystem({ typography: { bodyWeight: v } }); setActiveTarget('font-weight') }} />
         <div className="flex flex-col gap-1.5">
           <label className="text-xs font-medium">Text Casing</label>
-          <Select value={typography.casing} onValueChange={(v: TextCasing) => { updateSystem({ typography: { casing: v } }); setActiveTarget('font-casing') }}>
+          <Select value={typography.casing} onValueChange={(v) => { if (v) { updateSystem({ typography: { casing: v as TextCasing } }); setActiveTarget('font-casing') } }}>
             <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
             <SelectContent>
               <SelectItem value="none">Normal</SelectItem>
